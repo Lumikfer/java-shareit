@@ -18,15 +18,14 @@ public class ItemDto {
 
     private String description;
 
-    private Boolean  available;
+    private Boolean available;
 
     private long userid;
 
-   // private User owner;
 
     private ItemRequest request;
 
-    public ItemDto(String name,String description,boolean available,ItemRequest request,long userid) {
+    public ItemDto(String name, String description, boolean available, ItemRequest request, long userid) {
 
         this.name = name;
         this.description = description;
@@ -35,7 +34,6 @@ public class ItemDto {
         this.userid = userid;
 
     }
-
 
 
 }

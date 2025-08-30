@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.exception.NotFoundException;
-import ru.practicum.shareit.exception.ValidException;
 import ru.practicum.shareit.item.ItemMapper;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.model.Item;
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ItemStorageImpl implements ItemStorage {
     private final ItemMapper mapper;
-    private final UserMapper userMapper;
     private final UserStorage storage;
 
     Map<Long, Item> items = new HashMap<>();
@@ -30,14 +28,14 @@ public class ItemStorageImpl implements ItemStorage {
     @Override
     public List<ItemDto> getItems() {
         List<ItemDto> collection = items.values().stream()
-                .map(mapper::ItemToDto)
+                .map(mapper::itemDto)
                 .collect(Collectors.toList());
         return collection;
     }
 
     @Override
     public Item addItem(ItemDto itemDto, long ownerId) {
-        Item item = mapper.DtoToItem(itemDto);
+        Item item = mapper.dtoToItem(itemDto);
         item.setOwner(storage.getUserById(ownerId));
         items.put(item.getId(), item);
         return item;
@@ -57,12 +55,10 @@ public class ItemStorageImpl implements ItemStorage {
             throw new NotFoundException("Item not found");
         }
 
-        // Проверяем, что пользователь - владелец предмета
         if (existingItem.getOwner().getId() != userid) {
             throw new NotFoundException("Only owner can update item");
         }
 
-        // Обновляем поля
         if (itemDto.getName() != null) {
             existingItem.setName(itemDto.getName());
         }
@@ -73,7 +69,7 @@ public class ItemStorageImpl implements ItemStorage {
             existingItem.setAvailable(itemDto.getAvailable());
         }
 
-        return mapper.ItemToDto(existingItem);
+        return mapper.itemDto(existingItem);
     }
 
     @Override
@@ -87,7 +83,7 @@ public class ItemStorageImpl implements ItemStorage {
                 .filter(item -> item.isAvailable() &&
                         (item.getName().toLowerCase().contains(nameItem.toLowerCase()) ||
                                 item.getDescription().toLowerCase().contains(nameItem.toLowerCase())))
-                .map(mapper::ItemToDto)
+                .map(mapper::itemDto)
                 .collect(Collectors.toList());
     }
 

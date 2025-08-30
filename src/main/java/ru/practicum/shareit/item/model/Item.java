@@ -15,10 +15,10 @@ import ru.practicum.shareit.user.storage.UserStorageImp;
 @RequiredArgsConstructor
 @Data
 public class Item {
-   @NonNull
-   private UserStorageImp storage;
-   @NonNull
-   private  UserMapper mapper;
+    @NonNull
+    private UserStorageImp storage;
+    @NonNull
+    private UserMapper mapper;
 
     private long id;
     @NotEmpty
@@ -26,7 +26,7 @@ public class Item {
 
     private String description;
 
-    private  boolean  available;
+    private boolean available;
 
     private User owner;
 
@@ -34,7 +34,7 @@ public class Item {
 
     private ItemRequest request;
 
-    public Item(String name,String description,ItemRequest request,boolean available,long idOwner ) {
+    public Item(String name, String description, ItemRequest request, boolean available, long idOwner) {
         this.name = name;
         this.description = description;
         this.request = request;

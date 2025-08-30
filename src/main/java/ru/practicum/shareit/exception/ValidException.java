@@ -3,7 +3,7 @@ package ru.practicum.shareit.exception;
 import lombok.Getter;
 
 @Getter
-public class ValidException extends  RuntimeException{
+public class ValidException extends RuntimeException {
 
     private final String errors;
 

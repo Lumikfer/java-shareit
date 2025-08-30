@@ -31,11 +31,11 @@ public class UserStorageImp implements UserStorage {
         if (isEmailExists(userDto.getEmail())) {
             throw new ValidException("Email exist");
         }
-        if(userDto.getEmail() == null) {
+        if (userDto.getEmail() == null) {
             throw new ValidException("email don be empty");
         }
 
-        User user = mapper.DtoToModel(userDto);
+        User user = mapper.dtoToModel(userDto);
         user.setId(id++);
         users.put(user.getId(), user);
         return user;
@@ -48,7 +48,6 @@ public class UserStorageImp implements UserStorage {
         }
         users.remove(id);
     }
-
 
 
     @Override

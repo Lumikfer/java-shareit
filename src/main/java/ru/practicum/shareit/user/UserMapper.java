@@ -14,7 +14,7 @@ public class UserMapper {
         );
     }
 
-    public User DtoToModel(UserDto user) {
+    public User dtoToModel(UserDto user) {
         return new User(
                 user.getId(),
                 user.getName(),

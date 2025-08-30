@@ -24,6 +24,4 @@ public interface UserStorage {
     public Optional<User> findUserByEmail(String email);
 
 
-
-
 }

@@ -14,7 +14,7 @@ public interface ItemStorage {
 
     public void deleteItemById(long id);
 
-    public ItemDto patchItem(ItemDto item,long userid);
+    public ItemDto patchItem(ItemDto item, long userid);
 
     public Item getItemById(long id);
 
