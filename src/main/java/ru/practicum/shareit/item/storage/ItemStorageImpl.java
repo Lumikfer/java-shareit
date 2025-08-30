@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class ItemStorageImpl implements ItemStorage {
     private final ItemMapper mapper;
     private final UserStorage storage;
-    private static long id;
+    private long id;
 
     Map<Long, Item> items = new HashMap<>();
 
