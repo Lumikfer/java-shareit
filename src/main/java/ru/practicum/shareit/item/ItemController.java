@@ -20,13 +20,13 @@ public class ItemController {
     public ItemDto addItem(@RequestBody ItemDto itemDto,
                            @RequestHeader("X-Sharer-User-Id") Long userId) {
         Item item = storage.addItem(itemDto, userId);
-        return mapper.itemDto(item);
+        return mapper.itemToDto(item);
     }
 
     @GetMapping("/{id}")
     public ItemDto getItemById(@PathVariable long id) {
         Item item = storage.getItemById(id);
-        return mapper.itemDto(item);
+        return mapper.itemToDto(item);
     }
 
     @GetMapping

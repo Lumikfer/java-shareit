@@ -16,7 +16,7 @@ public class ItemMapper {
         );
     }
 
-    public ItemDto itemDto(Item item) {
+    public ItemDto itemToDto(Item item) {
         return new ItemDto(
                 item.getName(),
                 item.getDescription(),

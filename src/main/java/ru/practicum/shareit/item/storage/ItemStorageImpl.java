@@ -21,13 +21,14 @@ import java.util.stream.Collectors;
 public class ItemStorageImpl implements ItemStorage {
     private final ItemMapper mapper;
     private final UserStorage storage;
+    private static long id;
 
     Map<Long, Item> items = new HashMap<>();
 
     @Override
     public List<ItemDto> getItems() {
         List<ItemDto> collection = items.values().stream()
-                .map(mapper::itemDto)
+                .map(mapper::itemToDto)
                 .collect(Collectors.toList());
         return collection;
     }
@@ -35,8 +36,10 @@ public class ItemStorageImpl implements ItemStorage {
     @Override
     public Item addItem(ItemDto itemDto, long ownerId) {
         Item item = mapper.dtoToItem(itemDto);
+        item.setId(id);
         item.setOwner(storage.getUserById(ownerId));
-        items.put(item.getId(), item);
+        items.put(id, item);
+        id++;
         return item;
     }
 
@@ -68,7 +71,7 @@ public class ItemStorageImpl implements ItemStorage {
             existingItem.setAvailable(itemDto.getAvailable());
         }
 
-        return mapper.itemDto(existingItem);
+        return mapper.itemToDto(existingItem);
     }
 
     @Override
@@ -82,13 +85,16 @@ public class ItemStorageImpl implements ItemStorage {
                 .filter(item -> item.isAvailable() &&
                         (item.getName().toLowerCase().contains(nameItem.toLowerCase()) ||
                                 item.getDescription().toLowerCase().contains(nameItem.toLowerCase())))
-                .map(mapper::itemDto)
+                .map(mapper::itemToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Collection<ItemDto> getItemsByOwner(long ownerId) {
-        return List.of();
+        return items.values().stream()
+                .filter(item -> item.getOwner().getId() == ownerId)
+                .map(mapper::itemToDto)
+                .collect(Collectors.toList());
     }
 
     @Override

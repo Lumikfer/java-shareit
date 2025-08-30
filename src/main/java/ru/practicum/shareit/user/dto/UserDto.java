@@ -9,10 +9,9 @@ import lombok.Data;
 public class UserDto {
 
     private long id;
-    @NotBlank
-    private String name;
 
-    @NotBlank
+    private String name;
+    
     @Email(message = "Invalid email format")
     private String email;
 
