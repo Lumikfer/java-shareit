@@ -6,8 +6,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import ru.practicum.shareit.request.ItemRequest;
 import ru.practicum.shareit.user.*;
-import ru.practicum.shareit.user.dto.UserDto;
-import ru.practicum.shareit.user.storage.UserStorage;
 import ru.practicum.shareit.user.storage.UserStorageImp;
 
 
