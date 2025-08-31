@@ -11,7 +11,7 @@ public class UserDto {
 
     private String name;
 
-    @Email(message = "Invalid email format")
+    @Email
     private String email;
 
     public UserDto(long id, String name, String email) {

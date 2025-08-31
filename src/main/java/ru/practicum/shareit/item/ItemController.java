@@ -38,7 +38,7 @@ public class ItemController {
     public ItemDto updateItem(@PathVariable long id,
                               @RequestBody ItemDto itemDto,
                               @RequestHeader("X-Sharer-User-Id") Long userId) {
-        return storage.patchItem(itemDto, userId);
+        return storage.patchItem(itemDto, userId, id);
 
     }
 

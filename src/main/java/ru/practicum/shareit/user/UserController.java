@@ -37,7 +37,6 @@ public class UserController {
     public UserDto updateUser(@PathVariable long id,
                               @Valid @RequestBody UserDto userDto) {
 
-
         return mapper.modelToDto(storage.updateUserById(id, userDto));
     }
 

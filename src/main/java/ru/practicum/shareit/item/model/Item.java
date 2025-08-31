@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import ru.practicum.shareit.request.ItemRequest;
 import ru.practicum.shareit.user.*;
+import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.storage.UserStorageImp;
 
 
@@ -26,7 +27,7 @@ public class Item {
 
     private String description;
 
-    private boolean available;
+    private Boolean available;
 
     private User owner;
 
@@ -34,7 +35,10 @@ public class Item {
 
     private ItemRequest request;
 
-    public Item(String name, String description, ItemRequest request, boolean available, long idOwner) {
+    public Item() {
+    }
+
+    public Item(String name, String description, ItemRequest request, Boolean available, long idOwner) {
         this.name = name;
         this.description = description;
         this.request = request;
@@ -42,7 +46,5 @@ public class Item {
         this.idOwner = idOwner;
     }
 
-
-//
 
 }

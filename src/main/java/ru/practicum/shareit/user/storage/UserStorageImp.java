@@ -2,11 +2,12 @@ package ru.practicum.shareit.user.storage;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
-import ru.practicum.shareit.exception.ConflictException;
+import org.springframework.web.server.ResponseStatusException;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidException;
-import ru.practicum.shareit.user.User;
+import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.UserMapper;
 import ru.practicum.shareit.user.dto.UserDto;
 
@@ -54,13 +55,13 @@ public class UserStorageImp implements UserStorage {
     public User updateUserById(long id, UserDto userDto) {
         User user = users.get(id);
         if (user == null) {
-            throw new NotFoundException("User not found");
+            throw new NotFoundException();
         }
 
         if (userDto.getEmail() != null &&
                 !userDto.getEmail().equals(user.getEmail()) &&
                 isEmailExists(userDto.getEmail())) {
-            throw new ConflictException("Email already exists");
+            throw new ResponseStatusException(HttpStatus.CONFLICT);
         }
 
         if (userDto.getName() != null) {
@@ -77,7 +78,7 @@ public class UserStorageImp implements UserStorage {
     public User getUserById(long id) {
         User user = users.get(id);
         if (user == null) {
-            throw new RuntimeException("User not found");
+            throw new NotFoundException();
         }
         return user;
     }

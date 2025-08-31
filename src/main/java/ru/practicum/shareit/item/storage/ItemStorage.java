@@ -14,15 +14,13 @@ public interface ItemStorage {
 
     public void deleteItemById(long id);
 
-    public ItemDto patchItem(ItemDto item, long userid);
+    public ItemDto patchItem(ItemDto item, long userid, long id);
 
     public Item getItemById(long id);
 
     public List<ItemDto> searchItem(String nameItem);
 
     Collection<ItemDto> getItemsByOwner(long ownerId);
-
-    Item patchItem(Item item, long userId);
 
 
 }

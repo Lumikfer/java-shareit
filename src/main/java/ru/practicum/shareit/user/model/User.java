@@ -1,6 +1,5 @@
-package ru.practicum.shareit.user;
+package ru.practicum.shareit.user.model;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -18,7 +17,7 @@ public class User {
     private String name;
 
     @NotBlank
-    @Email(message = "Invalid email format")
+
     private String email;
 
     public User(long id, String name, String email) {

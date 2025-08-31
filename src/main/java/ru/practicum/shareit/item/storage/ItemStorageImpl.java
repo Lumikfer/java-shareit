@@ -4,15 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.exception.NotFoundException;
+import ru.practicum.shareit.exception.ValidException;
 import ru.practicum.shareit.item.ItemMapper;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.storage.UserStorage;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Primary
@@ -21,7 +19,7 @@ import java.util.stream.Collectors;
 public class ItemStorageImpl implements ItemStorage {
     private final ItemMapper mapper;
     private final UserStorage storage;
-    private long id;
+    private long id = 1;
 
     Map<Long, Item> items = new HashMap<>();
 
@@ -35,6 +33,17 @@ public class ItemStorageImpl implements ItemStorage {
 
     @Override
     public Item addItem(ItemDto itemDto, long ownerId) {
+
+        if (itemDto.getAvailable() == null) {
+            throw new ValidException("Available status cannot be null");
+        }
+
+        if (itemDto.getName() == null || itemDto.getName().isBlank()) {
+            throw new ValidException("item without name");
+        }
+        if (itemDto.getDescription() == null || itemDto.getDescription().isBlank()) {
+            throw new ValidException("item without description");
+        }
         Item item = mapper.dtoToItem(itemDto);
         item.setId(id);
         item.setOwner(storage.getUserById(ownerId));
@@ -51,40 +60,49 @@ public class ItemStorageImpl implements ItemStorage {
     }
 
     @Override
-    public ItemDto patchItem(ItemDto itemDto, long userid) {
-        Item existingItem = items.get(itemDto.getId());
-        if (existingItem == null) {
-            throw new NotFoundException("Item not found");
+    public ItemDto patchItem(ItemDto itemDto, long userid, long itemId) {
+
+        if (!items.containsKey(itemId)) {
+            throw new NotFoundException();
         }
 
-        if (existingItem.getOwner().getId() != userid) {
-            throw new NotFoundException("Only owner can update item");
-        }
+        Item newItem = items.get(itemId);
 
+        if (newItem.getOwner().getId() != userid) {
+            throw new NotFoundException();
+        }
         if (itemDto.getName() != null) {
-            existingItem.setName(itemDto.getName());
+            newItem.setName(itemDto.getName());
         }
         if (itemDto.getDescription() != null) {
-            existingItem.setDescription(itemDto.getDescription());
+
+            newItem.setDescription(itemDto.getDescription());
         }
         if (itemDto.getAvailable() != null) {
-            existingItem.setAvailable(itemDto.getAvailable());
+            newItem.setAvailable(itemDto.getAvailable());
         }
 
-        return mapper.itemToDto(existingItem);
+        return mapper.itemToDto(newItem);
     }
 
     @Override
     public Item getItemById(long id) {
-        return items.get(id);
+        Item item = items.get(id);
+        if (item == null) {
+            throw new NotFoundException();
+        }
+        return item;
     }
 
     @Override
-    public List<ItemDto> searchItem(String nameItem) {
+    public List<ItemDto> searchItem(String name) {
+        if (name == null || name.isBlank()) {
+            return Collections.emptyList();
+        }
         return items.values().stream()
-                .filter(item -> item.isAvailable() &&
-                        (item.getName().toLowerCase().contains(nameItem.toLowerCase()) ||
-                                item.getDescription().toLowerCase().contains(nameItem.toLowerCase())))
+                .filter(item -> item.getAvailable() &&
+                        (item.getName().toLowerCase().contains(name.toLowerCase()) ||
+                                item.getDescription().toLowerCase().contains(name.toLowerCase())))
                 .map(mapper::itemToDto)
                 .collect(Collectors.toList());
     }
@@ -97,8 +115,5 @@ public class ItemStorageImpl implements ItemStorage {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public Item patchItem(Item item, long userId) {
-        return null;
-    }
+
 }
