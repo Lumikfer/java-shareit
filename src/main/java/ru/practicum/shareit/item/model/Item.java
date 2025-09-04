@@ -3,13 +3,8 @@ package ru.practicum.shareit.item.model;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import ru.practicum.shareit.request.ItemRequest;
-import ru.practicum.shareit.user.*;
 import ru.practicum.shareit.user.model.User;
-import ru.practicum.shareit.user.storage.UserStorageImp;
-
 
 /**
  * TODO Sprint add-controllers.
