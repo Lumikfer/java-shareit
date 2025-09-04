@@ -2,6 +2,7 @@ package ru.practicum.shareit.item.model;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import ru.practicum.shareit.request.ItemRequest;
@@ -13,13 +14,9 @@ import ru.practicum.shareit.user.storage.UserStorageImp;
 /**
  * TODO Sprint add-controllers.
  */
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Data
 public class Item {
-    @NonNull
-    private UserStorageImp storage;
-    @NonNull
-    private UserMapper mapper;
 
     private long id;
     @NotEmpty
@@ -35,8 +32,6 @@ public class Item {
 
     private ItemRequest request;
 
-    public Item() {
-    }
 
     public Item(String name, String description, ItemRequest request, Boolean available, long idOwner) {
         this.name = name;

@@ -1,7 +1,6 @@
 package ru.practicum.shareit.item.storage;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidException;
@@ -13,7 +12,7 @@ import ru.practicum.shareit.user.storage.UserStorage;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Primary
+
 @Repository
 @RequiredArgsConstructor
 public class ItemStorageImpl implements ItemStorage {

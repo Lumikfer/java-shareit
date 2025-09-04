@@ -1,7 +1,6 @@
 package ru.practicum.shareit.user.storage;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,7 +17,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
-@Primary
 @RequiredArgsConstructor
 public class UserStorageImp implements UserStorage {
 

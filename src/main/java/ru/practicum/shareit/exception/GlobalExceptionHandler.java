@@ -15,7 +15,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ConflictException.class)
-    public ResponseEntity<Object> handleConflict(ConflictException ex) {
+    public ResponseEntity<String> handleConflict(ConflictException ex) {
 
         return ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
