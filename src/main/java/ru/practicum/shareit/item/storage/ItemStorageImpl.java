@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 public class ItemStorageImpl implements ItemStorage {
     private final ItemMapper mapper;
     private final UserStorage storage;
+
     private long id = 1;
 
     Map<Long, Item> items = new HashMap<>();
@@ -113,6 +114,5 @@ public class ItemStorageImpl implements ItemStorage {
                 .map(mapper::itemToDto)
                 .collect(Collectors.toList());
     }
-
 
 }

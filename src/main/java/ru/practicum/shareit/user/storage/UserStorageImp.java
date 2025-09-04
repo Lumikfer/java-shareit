@@ -52,9 +52,6 @@ public class UserStorageImp implements UserStorage {
     @Override
     public User updateUserById(long id, UserDto userDto) {
         User user = users.get(id);
-        if (user == null) {
-            throw new NotFoundException();
-        }
 
         if (userDto.getEmail() != null &&
                 !userDto.getEmail().equals(user.getEmail()) &&
