@@ -23,7 +23,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,7 +38,7 @@ public class ItemServiceImp implements ItemService {
     @Override
     public List<DtoComments> getCommentByItem(long itemId) {
         return commentsStorage.findByItemId(itemId).stream()
-                .map(mapper::CommentEntityToDto)
+                .map(mapper::сommentEntityToDto)
                 .toList();
     }
 
@@ -88,7 +87,7 @@ public class ItemServiceImp implements ItemService {
         comment.setText(dto.getText());
 
         EntityComments savedComment = commentsStorage.save(comment);
-        return mapper.CommentEntityToDto(savedComment);
+        return mapper.сommentEntityToDto(savedComment);
     }
 
     @Override
@@ -150,7 +149,7 @@ public class ItemServiceImp implements ItemService {
 
         UserEntity user = userStorage.findById(userid);
 
-        if(user == null) {
+        if (user == null) {
             throw new NotFoundException();
         }
 
@@ -187,7 +186,7 @@ public class ItemServiceImp implements ItemService {
     @Override
     public List<ItemDto> searchItem(String nameItem) {
 
-        System.out.println(nameItem+"  LOGGER!");
+        System.out.println(nameItem + "  LOGGER!");
         if (nameItem == null || nameItem.isBlank()) {
             return List.of();
         }

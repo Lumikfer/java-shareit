@@ -2,7 +2,6 @@ package ru.practicum.shareit.booking.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.booking.BookingMapper;
 import ru.practicum.shareit.booking.State;
@@ -11,7 +10,6 @@ import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.booking.entity.BookingEntity;
 import ru.practicum.shareit.booking.storage.BookingStorage;
 import ru.practicum.shareit.exception.AccessDeniedException;
-import ru.practicum.shareit.exception.ConflictException;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidException;
 import ru.practicum.shareit.item.entity.ItemEntity;
@@ -133,8 +131,8 @@ public class BookingServiceImp implements BookingService {
 
     @Override
     public List<BookingDto> getBookingsByOwner(long ownerId, String state) {
-      UserEntity user =  userStorage.findById(ownerId);
-        if(user == null) {
+        UserEntity user = userStorage.findById(ownerId);
+        if (user == null) {
             throw new NotFoundException();
         }
 
@@ -177,7 +175,7 @@ public class BookingServiceImp implements BookingService {
 
         BookingEntity booking = storage.findById(bookingId);
 
-        System.out.println("Booking LOG!: "+booking);
+        System.out.println("Booking LOG!: " + booking);
 
         if (booking.getItem().getOwner().getId() != userId) {
             throw new AccessDeniedException();
@@ -197,7 +195,7 @@ public class BookingServiceImp implements BookingService {
     private State stringToState(String state) {
         State state1 = null;
 
-        switch(state) {
+        switch (state) {
             case "ALL":
                 state1 = State.ALL;
                 break;
