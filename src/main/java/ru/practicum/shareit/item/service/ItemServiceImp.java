@@ -193,10 +193,10 @@ public class ItemServiceImp implements ItemService {
 
         List<ItemEntity> items = new ArrayList<>(storage.findByNameContainingIgnoreCaseAndAvailableTrue(nameItem));
         System.out.println(items);
-        List<Item> ModelList = items.stream()
+        List<Item> modelList = items.stream()
                 .map(mapper::entityToItem)
                 .toList();
-        List<ItemDto> itemList = ModelList.stream()
+        List<ItemDto> itemList = modelList.stream()
                 .map(mapper::itemToDto)
                 .toList();
         return itemList;
@@ -205,10 +205,10 @@ public class ItemServiceImp implements ItemService {
     @Override
     public Collection<ItemDto> getItemsByOwner(long ownerId) {
         List<ItemEntity> items = new ArrayList<>(storage.findByOwnerId(ownerId));
-        List<Item> ModelList = items.stream()
+        List<Item> modelList = items.stream()
                 .map(mapper::entityToItem)
                 .toList();
-        List<ItemDto> itemList = ModelList.stream()
+        List<ItemDto> itemList = modelList.stream()
                 .map(mapper::itemToDto)
                 .toList();
         return itemList;
