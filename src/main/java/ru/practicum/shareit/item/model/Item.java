@@ -28,10 +28,10 @@ public class Item {
     private ItemRequest request;
 
 
-    public Item(String name, String description, ItemRequest request, Boolean available, long idOwner) {
+    public Item(Long id,String name, String description, Boolean available, long idOwner) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.request = request;
         this.available = available;
         this.idOwner = idOwner;
     }

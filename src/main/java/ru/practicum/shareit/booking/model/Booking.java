@@ -1,9 +1,9 @@
-package ru.practicum.shareit.booking.dto;
+package ru.practicum.shareit.booking.model;
 
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import ru.practicum.shareit.booking.State;
 import ru.practicum.shareit.booking.Status;
@@ -15,11 +15,12 @@ import java.time.LocalDateTime;
 /**
  * TODO Sprint add-bookings.
  */
+@NoArgsConstructor
+
 @AllArgsConstructor
 @Data
-public class BookingDto {
+public class Booking {
 
-    @Id
     long id;
 
     @NotNull
@@ -30,11 +31,8 @@ public class BookingDto {
     @DateTimeFormat
     LocalDateTime end;
 
-
     @NotNull
     Item item;
-
-    Long itemId;
 
     @NotNull
     User booker;
