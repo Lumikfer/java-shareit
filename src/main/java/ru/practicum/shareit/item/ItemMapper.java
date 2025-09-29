@@ -101,7 +101,7 @@ public class ItemMapper {
     }
 
 
-    public DtoComments сommentEntityToDto(EntityComments model) {
+    public DtoComments commentEntityToDto(EntityComments model) {
 
         return new DtoComments(
                 model.getId(),
@@ -128,7 +128,7 @@ public class ItemMapper {
         ShortBookingDto nextBooking = null;
 
         List<DtoComments> comments = commentsStorage.findByItemId(entity.getId()).stream()
-                .map(this::сommentEntityToDto)
+                .map(this::commentEntityToDto)
                 .toList();
 
         return new ItemDto(

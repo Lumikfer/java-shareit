@@ -38,7 +38,7 @@ public class ItemServiceImp implements ItemService {
     @Override
     public List<DtoComments> getCommentByItem(long itemId) {
         return commentsStorage.findByItemId(itemId).stream()
-                .map(mapper::сommentEntityToDto)
+                .map(mapper::commentEntityToDto)
                 .toList();
     }
 
@@ -87,16 +87,16 @@ public class ItemServiceImp implements ItemService {
         comment.setText(dto.getText());
 
         EntityComments savedComment = commentsStorage.save(comment);
-        return mapper.сommentEntityToDto(savedComment);
+        return mapper.commentEntityToDto(savedComment);
     }
 
     @Override
     public List<ItemDto> getItems() {
         List<ItemEntity> items = new ArrayList<>(storage.findAll());
-        List<Item> ModelList = items.stream()
+        List<Item> modelList = items.stream()
                 .map(mapper::entityToItem)
                 .toList();
-        return ModelList.stream()
+        return modelList.stream()
                 .map(mapper::itemToDto)
                 .toList();
     }
