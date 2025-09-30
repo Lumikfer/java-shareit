@@ -186,13 +186,11 @@ public class ItemServiceImp implements ItemService {
     @Override
     public List<ItemDto> searchItem(String nameItem) {
 
-        System.out.println(nameItem + "  LOGGER!");
         if (nameItem == null || nameItem.isBlank()) {
             return List.of();
         }
 
         List<ItemEntity> items = new ArrayList<>(storage.findByNameContainingIgnoreCaseAndAvailableTrue(nameItem));
-        System.out.println(items);
         List<Item> modelList = items.stream()
                 .map(mapper::entityToItem)
                 .toList();
