@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "booking")
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class BookingEntity {
 
     @Id

@@ -20,25 +20,25 @@ public class ItemController {
 
     @PostMapping
     public ItemDto addItem(@RequestBody ItemDto itemDto,
-                           @RequestHeader("X-Sharer-User-Id") long userId) {
+                           @RequestHeader("X-Sharer-User-Id") Long userId) {
 
         return mapper.itemToDto(service.addItem(itemDto, userId));
     }
 
     @GetMapping("/{id}")
-    public ItemDto getItemById(@PathVariable long id) {
+    public ItemDto getItemById(@PathVariable Long id) {
         return service.getItemById(id);
     }
 
     @GetMapping
-    public Collection<ItemDto> getUserItems(@RequestHeader("X-Sharer-User-Id") long userId) {
+    public Collection<ItemDto> getUserItems(@RequestHeader("X-Sharer-User-Id") Long userId) {
         return service.getItemsByOwner(userId);
     }
 
     @PatchMapping("/{id}")
-    public ItemDto updateItem(@PathVariable long id,
+    public ItemDto updateItem(@PathVariable Long id,
                               @RequestBody ItemDto itemDto,
-                              @RequestHeader(value = "X-Sharer-User-Id", required = false) long userId) {
+                              @RequestHeader(value = "X-Sharer-User-Id", required = false) Long userId) {
 
         return service.patchItem(itemDto, userId, id);
     }
@@ -49,17 +49,17 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteItem(@PathVariable long id) {
+    public void deleteItem(@PathVariable Long id) {
         service.deleteItemById(id);
     }
 
     @PostMapping("/{itemId}/comment")
-    public DtoComments addComment(@PathVariable long itemId, @RequestBody DtoComments dto, @RequestHeader("X-Sharer-User-Id") long userId) {
+    public DtoComments addComment(@PathVariable Long itemId, @RequestBody DtoComments dto, @RequestHeader("X-Sharer-User-Id") Long userId) {
         return service.addComments(itemId, userId, dto);
     }
 
     @GetMapping("/{itemId}/comment")
-    public List<DtoComments> getCommentByItem(@PathVariable long itemId) {
+    public List<DtoComments> getCommentByItem(@PathVariable Long itemId) {
         return service.getCommentByItem(itemId);
     }
 }

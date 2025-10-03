@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class BookingDto {
 
     @Id
-    long id;
+    private long id;
 
     @NotNull
     @DateTimeFormat

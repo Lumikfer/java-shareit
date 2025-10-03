@@ -2,7 +2,6 @@ package ru.practicum.shareit.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.exception.NotFoundException;
@@ -18,7 +17,6 @@ import java.util.List;
 
 
 @Service
-@EnableTransactionManagement
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
