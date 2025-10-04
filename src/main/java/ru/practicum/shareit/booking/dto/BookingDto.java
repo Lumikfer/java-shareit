@@ -19,7 +19,6 @@ import java.time.LocalDateTime;
 @Data
 public class BookingDto {
 
-    @Id
     private long id;
 
     @NotNull
