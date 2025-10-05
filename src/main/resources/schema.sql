@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS booking (
     end_time TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     item_id BIGINT NOT NULL,
     booker_id BIGINT NOT NULL,
-    state VARCHAR(50) NOT NULL,
     status VARCHAR(50) NOT NULL,
     CONSTRAINT fk_booking_item FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE,
     CONSTRAINT fk_booking_booker FOREIGN KEY (booker_id) REFERENCES users(id) ON DELETE CASCADE

@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.practicum.shareit.booking.State;
 import ru.practicum.shareit.booking.Status;
 import ru.practicum.shareit.item.entity.ItemEntity;
 import ru.practicum.shareit.user.entity.UserEntity;
@@ -39,9 +38,6 @@ public class BookingEntity {
     @JoinColumn(name = "booker_id", nullable = false)
     private UserEntity booker;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "state", nullable = false)
-    private State state;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)

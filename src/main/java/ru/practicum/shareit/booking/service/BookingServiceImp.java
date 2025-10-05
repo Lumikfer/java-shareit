@@ -73,7 +73,6 @@ public class BookingServiceImp implements BookingService {
         bookingEntity.setItem(item.get());
         bookingEntity.setBooker(user);
         bookingEntity.setStatus(Status.WAITING);
-        bookingEntity.setState(State.WAITING);
 
         BookingEntity saved = storage.save(bookingEntity);
         return mapper.entityToDto(saved);
@@ -186,7 +185,6 @@ public class BookingServiceImp implements BookingService {
         }
 
         booking.setStatus(approved ? Status.APPROVED : Status.REJECTED);
-        booking.setState(approved ? State.CURRENT : State.PAST);
         BookingEntity updated = storage.save(booking);
 
         return mapper.entityToDto(updated);

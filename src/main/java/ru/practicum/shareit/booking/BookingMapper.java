@@ -23,7 +23,6 @@ public class BookingMapper {
                 booking.getEnd(),
                 itemMapper.modelToEntity(booking.getItem()),
                 userMapper.modelToEntity(booking.getBooker()),
-                booking.getState(),
                 booking.getStatus()
         );
     }
@@ -36,7 +35,7 @@ public class BookingMapper {
                 itemMapper.entityToItem(booking.getItem()),
                 userMapper.entityToModel(booking.getBooker()),
                 booking.getStatus(),
-                booking.getState()
+                State.WAITING
         );
     }
 
@@ -50,7 +49,7 @@ public class BookingMapper {
                 itemMapper.entityToItem(booking.getItem()).getId(),
                 userMapper.entityToModel(booking.getBooker()),
                 booking.getStatus(),
-                booking.getState()
+                State.WAITING
 
         );
     }
