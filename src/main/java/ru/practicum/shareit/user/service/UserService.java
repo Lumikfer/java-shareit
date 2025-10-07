@@ -4,7 +4,7 @@ import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.model.User;
 
 import java.util.Collection;
-import java.util.Optional;
+
 
 public interface UserService {
 
@@ -18,5 +18,5 @@ public interface UserService {
 
     public Collection<UserDto> getAllUsers();
 
-    public Optional<User> findUserByEmail(String email);
+    public User findUserByEmail(String email);
 }

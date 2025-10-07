@@ -26,7 +26,7 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable long id) {
+    public UserDto getUserById(@PathVariable Long id) {
         return mapper.modelToDto(service.getUserById(id));
     }
 
@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public UserDto updateUser(@PathVariable long id,
+    public UserDto updateUser(@PathVariable Long id,
                               @Valid @RequestBody UserDto userDto) {
 
         return mapper.modelToDto(service.updateUserById(id, userDto));
@@ -44,7 +44,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable long id) {
+    public void deleteUser(@PathVariable Long id) {
         service.deleteUserById(id);
     }
 }
