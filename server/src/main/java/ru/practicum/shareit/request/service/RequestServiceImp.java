@@ -1,6 +1,5 @@
 package ru.practicum.shareit.request.service;
 
-import com.sun.jdi.PrimitiveValue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +12,6 @@ import ru.practicum.shareit.request.mapper.RequestMapper;
 import ru.practicum.shareit.request.storage.RequestStorage;
 import ru.practicum.shareit.user.UserMapper;
 import ru.practicum.shareit.user.entity.UserEntity;
-import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.service.UserService;
 
 import java.time.LocalDateTime;

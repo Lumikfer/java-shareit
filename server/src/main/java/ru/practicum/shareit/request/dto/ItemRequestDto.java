@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.user.dto.UserDto;
-import ru.practicum.shareit.user.entity.UserEntity;
+
 
 import java.time.LocalDateTime;
 import java.util.Set;
