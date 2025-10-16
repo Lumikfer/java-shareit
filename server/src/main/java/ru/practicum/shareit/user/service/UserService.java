@@ -5,7 +5,6 @@ import ru.practicum.shareit.user.model.User;
 
 import java.util.Collection;
 
-
 public interface UserService {
 
     public User addUser(UserDto userDto);
