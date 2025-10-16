@@ -26,7 +26,7 @@ public class ItemController {
     private final ItemClient itemClient;
 
 
-    @PostMapping
+    @PostMapping 
     @Validated(Marker.OnCreate.class)
     public ResponseEntity<ItemDto> add(@Valid @RequestBody ItemBodyDto itemBodyDto,
                                        @RequestHeader("X-Sharer-User-Id") long userId) {
