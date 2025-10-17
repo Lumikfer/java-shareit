@@ -1,6 +1,5 @@
 package ru.practicum.shareit.request.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

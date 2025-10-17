@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.practicum.shareit.booking.dto.ShortBookingDto;
 import ru.practicum.shareit.item.comments.DtoComments;
-import ru.practicum.shareit.request.dto.ItemRequestDto;
 
 import java.util.List;
 
