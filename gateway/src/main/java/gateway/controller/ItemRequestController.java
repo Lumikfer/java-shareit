@@ -26,7 +26,6 @@ public class ItemRequestController {
     @Validated(Marker.OnCreate.class)
     public ResponseEntity<RequestDto> addItemRequest(@Valid @RequestBody RequestItemDto requestItemDto,
                                                      @RequestHeader("X-Sharer-User-Id") Long userId) {
-        log.info("GATEWAY Попытка добавить Request");
         return itemRequestClient.addItemRequest(requestItemDto, userId);
     }
 
@@ -43,7 +42,6 @@ public class ItemRequestController {
     @GetMapping("/{requestId}")
     public ResponseEntity<RequestDto> getItemRequestById(@RequestHeader("X-Sharer-User-Id") Long userId,
                                                          @PathVariable Long requestId) {
-        log.info("GATEWAY Попытка получить Request по id");
         return itemRequestClient.getItemRequestById(userId, requestId);
     }
 }

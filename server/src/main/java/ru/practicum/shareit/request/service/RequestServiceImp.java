@@ -71,7 +71,6 @@ public class RequestServiceImp implements RequestService {
     public ItemRequestDto getRequestById(Long id, Long userId) {
 
 
-
         System.out.println("=== DEBUG Get Request By ID ===");
         System.out.println("Request ID: " + id);
         System.out.println("User ID: " + userId);
@@ -91,7 +90,7 @@ public class RequestServiceImp implements RequestService {
         System.out.println("=== END DEBUG ===");
         ItemRequestDto request = mapper.entityToDto(storage.getById(id));
         Set<ItemDto> listItems = itemService.getAllItemsForRequest(id).stream()
-                        .collect(Collectors.toSet());
+                .collect(Collectors.toSet());
         request.setItems(listItems);
         return request;
     }

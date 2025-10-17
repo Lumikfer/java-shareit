@@ -38,15 +38,16 @@ public class ItemMapper {
     }
 
     public ItemDto entityToDto(ItemEntity entity) {
-        if(entity.getRequest() == null) {
-        return new ItemDto(
-                entity.getId(),
-                entity.getName(),
-                entity.getDescription(),
-                entity.getAvailable(),
-                entity.getOwner().getId()
+        if (entity.getRequest() == null) {
+            return new ItemDto(
+                    entity.getId(),
+                    entity.getName(),
+                    entity.getDescription(),
+                    entity.getAvailable(),
+                    entity.getOwner().getId()
 
-        );}else {
+            );
+        } else {
             return new ItemDto(
                     entity.getId(),
                     entity.getName(),
@@ -72,7 +73,7 @@ public class ItemMapper {
     }
 
     public Item entityToItem(ItemEntity entity) {
-        if(entity == null) {
+        if (entity == null) {
             return null;
         }
 

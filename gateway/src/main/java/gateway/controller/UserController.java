@@ -23,7 +23,6 @@ public class UserController {
     @PostMapping
     @Validated(Marker.OnCreate.class)
     public ResponseEntity<UserDto> add(@Valid @RequestBody RequestUserDto requestUserDto) {
-        log.info("Попытка добавить User: {}", requestUserDto);
         return userClient.add(requestUserDto);
     }
 
@@ -31,19 +30,16 @@ public class UserController {
     @Validated(Marker.OnUpdate.class)
     public ResponseEntity<UserDto> updateUser(@PathVariable long userId,
                                               @Valid @RequestBody RequestUserDto requestUserDto) {
-        log.info("Попытка обновить User с ID {}: {}", userId, requestUserDto);
         return userClient.updateUser(userId, requestUserDto);
     }
 
     @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable long userId) {
-        log.info("Попытка удалить User с ID {}", userId);
         return userClient.deleteUser(userId);
     }
 
     @GetMapping("/{userId}")
     public ResponseEntity<UserDto> getUserById(@PathVariable long userId) {
-        log.info("Запрос информации о User с ID {}", userId);
         return userClient.getUserById(userId);
     }
 }

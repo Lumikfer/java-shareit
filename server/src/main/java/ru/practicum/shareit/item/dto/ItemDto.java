@@ -35,7 +35,8 @@ public class ItemDto {
         this.available = available;
         this.userid = owner;
     }
-    public ItemDto(Long id, String name, String description, Boolean available, Long owner,Long requestId) {
+
+    public ItemDto(Long id, String name, String description, Boolean available, Long owner, Long requestId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -45,7 +46,7 @@ public class ItemDto {
     }
 
 
-    public ItemDto(Long id, String name, String description, Boolean available, Long owner, ShortBookingDto lastBooking, ShortBookingDto nextBooking, List<DtoComments> comments,Long request) {
+    public ItemDto(Long id, String name, String description, Boolean available, Long owner, ShortBookingDto lastBooking, ShortBookingDto nextBooking, List<DtoComments> comments, Long request) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -18,7 +18,6 @@ public class BookingController {
     private final BookingService service;
 
 
-
     @PostMapping
     public BookingDto addBooking(@RequestBody BookingDto dto, @RequestHeader("X-Sharer-User-Id") Long userId) {
         return service.addBooking(dto, userId);
@@ -36,7 +35,7 @@ public class BookingController {
     public List<BookingDto> getBookings(
             @RequestHeader("X-Sharer-User-Id") Long userId,
             @RequestParam(defaultValue = "ALL", required = false) String state) {
-        
+
         return service.getBookingsByBooker(userId, state);
     }
 

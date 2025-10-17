@@ -29,7 +29,7 @@ public class Item {
     private ItemRequestDto request;
 
 
-    public Item(Long id,String name, String description, Boolean available, long idOwner,ItemRequestDto request) {
+    public Item(Long id, String name, String description, Boolean available, long idOwner, ItemRequestDto request) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -30,7 +30,6 @@ public class ItemController {
     @Validated(Marker.OnCreate.class)
     public ResponseEntity<ItemDto> add(@Valid @RequestBody ItemBodyDto itemBodyDto,
                                        @RequestHeader("X-Sharer-User-Id") long userId) {
-        log.info("Запрос на добавление элемента: {}, для пользователя с ID {}", itemBodyDto, userId);
         return itemClient.add(itemBodyDto, userId);
     }
 
@@ -38,26 +37,22 @@ public class ItemController {
     public ResponseEntity<ItemDto> update(@PathVariable long itemsId,
                                           @Valid @RequestBody ItemBodyDto itemBodyDto,
                                           @RequestHeader("X-Sharer-User-Id") Long userId) {
-        log.info("Запрос на обновление элемента с ID {}: {}, для пользователя с ID {}", itemsId, itemBodyDto, userId);
         return itemClient.update(itemsId, itemBodyDto, userId);
     }
 
     @GetMapping("/{itemsId}")
     public ResponseEntity<ItemDto> getById(@PathVariable long itemsId) {
-        log.info("Запрос на получение элемента с ID {}", itemsId);
         return itemClient.getById(itemsId);
     }
 
     @GetMapping
     public ResponseEntity<Collection<ItemDto>> getItemsByOwner(@RequestHeader("X-Sharer-User-Id") Long userId) {
-        log.info("Запрос на получение элементов для владельца с ID {}", userId);
         return itemClient.getItemsByOwner(userId);
     }
 
     @GetMapping("/search")
     public ResponseEntity<List<ItemDto>> search(@RequestParam String text,
                                                 @RequestHeader("X-Sharer-User-Id") Long userId) {
-        log.info("Запрос на поиск элементов по тексту '{}' для пользователя с ID {}", text, userId);
         return itemClient.search(text, userId);
     }
 
@@ -66,7 +61,6 @@ public class ItemController {
     public ResponseEntity<CommentDto> addComment(@PathVariable Long itemId,
                                                  @Valid @RequestBody RequestCommentDto requestCommentDto,
                                                  @RequestHeader("X-Sharer-User-Id") Long userId) {
-        log.info("Запрос на добавление комментария к элементу с ID {}: {}, для пользователя с ID {}", itemId, requestCommentDto, userId);
         return itemClient.addComment(itemId, requestCommentDto, userId);
     }
 }

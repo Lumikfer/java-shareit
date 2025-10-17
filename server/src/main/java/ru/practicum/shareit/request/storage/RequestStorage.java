@@ -6,8 +6,9 @@ import ru.practicum.shareit.request.entity.RequestEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 @Repository
-public interface RequestStorage extends JpaRepository<RequestEntity,Long> {
+public interface RequestStorage extends JpaRepository<RequestEntity, Long> {
 
     List<RequestEntity> findByRequestorId(Long requestor);
 
@@ -17,10 +18,7 @@ public interface RequestStorage extends JpaRepository<RequestEntity,Long> {
 
     long countByRequestorId(Long requestor);
 
-    //RequestEntity findById(Long id);
-
     boolean existsByRequestorId(Long requestor);
 
-   // RequestEntity findById(Long id);
 
 }

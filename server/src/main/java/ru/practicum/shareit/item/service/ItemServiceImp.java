@@ -114,11 +114,11 @@ public class ItemServiceImp implements ItemService {
         if (item.getDescription() == null || item.getDescription().isBlank()) {
             throw new ValidException("");
         }
-       RequestEntity request = null;
+        RequestEntity request = null;
         if (item.getRequestId() != null) {
             request = requestStorage.findById(item.getRequestId()).get();
-            System.out.println("REQUESTID "+item.getRequestId());
-            System.out.println("REQUEST "+request);
+            System.out.println("REQUESTID " + item.getRequestId());
+            System.out.println("REQUEST " + request);
         }
 
         UserEntity owner = userStorage.findById(idOwner);

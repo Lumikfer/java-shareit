@@ -10,7 +10,8 @@ import ru.practicum.shareit.user.UserMapper;
 @RequiredArgsConstructor
 public class RequestMapper {
 
-    private  final UserMapper userMapper;
+    private final UserMapper userMapper;
+
     public RequestEntity dtoToEntity(ItemRequestDto dto) {
         return new RequestEntity(
                 dto.getId(),
@@ -21,14 +22,14 @@ public class RequestMapper {
     }
 
     public ItemRequestDto entityToDto(RequestEntity entity) {
-        if(entity == null) {
+        if (entity == null) {
             return null;
         }
 
         return new ItemRequestDto(
                 entity.getId(),
                 entity.getDescription(),
-                userMapper.modelToDto(userMapper.entityToModel( entity.getRequestor())),
+                userMapper.modelToDto(userMapper.entityToModel(entity.getRequestor())),
                 entity.getCreated()
         );
 
